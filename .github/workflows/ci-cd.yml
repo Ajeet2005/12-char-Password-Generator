@@ -1,0 +1,22 @@
+name: Simple CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Basic check (fail if no files)
+        run: |
+          ls
+          test -f index.html
+
+      - name: Deploy
+        run: echo "Deployed successfully"
